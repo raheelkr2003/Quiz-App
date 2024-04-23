@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <section class="quiz-result">
+            <div class="heading">
+                <p class="title">Quiz Result</p>
+            </div>
+            <div class="result">
+                <!-- JavaScript will populate this element with the score -->
+                <p id="score">You scored <span id="userScore"></span>/4</p>
+                <p class="reload">
+                    <button onclick="document.location.href = './index.html'">Try Again</button>
+                </p>
+                <p>User Information:</p>
+                <p>Name: <span id="userName"></span></p>
+                <p>Roll Number: <span id="userRoll"></span></p>
+                <p>Batch: <span id="userBatch"></span></p>
+                <p>Section: <span id="userSection"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Retrieve user information from local storage
+        const userName = localStorage.getItem("userName");
+        const userRoll = localStorage.getItem("userRoll");
+        const userBatch = localStorage.getItem("userBatch");
+        const userSection = localStorage.getItem("userSection");
+        
+        // Retrieve the score from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score');
+
+        // Display user information and score on the result page
+        document.getElementById("userName").textContent = userName;
+        document.getElementById("userRoll").textContent = userRoll;
+        document.getElementById("userBatch").textContent = userBatch;
+        document.getElementById("userSection").textContent = userSection;
+        document.getElementById("userScore").textContent = score;
+    </script>
+</body>
+</html>
